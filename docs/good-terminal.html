@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alyssa's Guide to a Good Terminal</title>
+  	<link href="../reset.css" rel="stylesheet" />
+  	<link href="docs.css" rel="stylesheet" />
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Oswald:wght@400;500&display=swap" rel="stylesheet">  
+</head>
+<body>
+
+	<h1>Alyssa’s Guide to a Good Terminal</h1>
+
+	<p><b>Your terminal is your home.</b> Just like your real home, we want this thing to be <i>nice</i>. We’re there all dang day!</p>
+
+	<p>Even small improvements in your terminal can have huge impacts on your productivity. We don’t get paid to sit in front of a computer, we get paid to deliver business value. The faster you do your work, the less time you have to sit in front of your computer.</p> 
+
+	<p>I’m going to teach you how I like my terminal set up. These are hard-earned opinions. I advise you to start with my opinions until you have enough experience to develop your own.</p>
+
+	<p>This document was last updated on <b>19 MARCH 2022</b></p>
+
+
+	<h2>First, a note on documentation conventions</h2>
+
+	<p>When you’re reading example commands, it can be hard to understand what part of a command (if any) you should replace. Here are two common conventions to be aware of:</p>
+
+	<ul>
+	 <li>If you see angle brackets <code>&lsaquo;like this&rsaquo;</code> that is always a sign that you need to replace the stuff inside the angle brackets with something specific to you. Don’t leave the angle brackets behind! For example, if you saw a link like this:</li>
+	 	<ul>
+	    <li><code>https://this.is.an.example.url/users/&lsaquo;your alias&rsaquo;</code></li>
+	    <li>The author of that documentation expects you to replace <code>&lsaquo;your alias&rsaquo;</code> with your actual alias, without the angle brackets</li>
+	    <li>Finished example: <code>https://this.is.an.example.url/alyssahursh</code></li>
+	  </ul>
+	<li>If you see example commands that start with a leading dollar sign, that is the author telling you “run this command in your terminal” — they don’t mean for you to include the dollar sign when you copy the command. For example, if you saw this instruction:</li>
+		<ul>
+			<li>Run <code>$ cd ~/.ssh</code></li>
+	    <li>Only copy <code>cd ~/.ssh</code> — don’t copy the <code>$</code>.</li>
+	  </ul>
+	</ul>
+
+
+
+	<h2><a href="https://iterm2.com/" target="blank">iTerm2</a></h2>
+
+	<p>I prefer <a href="https://iterm2.com/" target="blank">iTerm2</a> over Apple’s default terminal. Why? One time my brother made fun of me for using the default terminal. That’s it. I have been using iTerm2 for so long that I don’t how it differs from terminal. The rest of these instructions all assume you’re using iTerm2. They probably work in terminal too, but I haven’t tested that myself.</p>
+
+	<p>You can install iTerm2 from the <a href="https://iterm2.com/features.html" target="blank">iTerm2 website</a>.</p> 
+
+	<p>One deficiency of iTerm2 is that it doesn’t default to unlimited scrollback. Scrollback is how far in your terminal output you can scroll back before the output gets cut off. iTerm2’s default is (I think) 1,000 lines, which often isn’t enough.</p>
+
+	<p>To set iTerm2’s scrollback buffer to “unlimited”:</p>
+
+	<ol>
+		<li>Make sure that iTerm2 is open and “in focus” (i.e. it’s the active application)
+		<li><code>command + comma (⌘,)</code> to open iTerm2’s preferences — please practice using this key command, this is the default key command to open application preferences for the application in focus. I need you to practice using keyboard shortcuts all the time; it is critical that you become fluent with your keyboard.
+		<li>Click “Profiles”
+		<li>Click “Terminal”
+		<li>Under “Scrollback Buffer” check “Unlimited scrollback”
+		<li><code>command + Q (⌘Q)</code> to close iTerm2 entirely — please practice using this key command to close the current application rather than clicking the little red circle
+		<li><code>command + space bar (⌘ + space)</code> to open Spotlight Search
+		<li>Search for iTerm and hit enter to open iTerm again — please practice always using Spotlight Search to open applications 
+	</ol>
+
+
+
+	<h2><a href="https://www.zsh.org/" target="blank">zsh</a></h2>
+
+	<p><a href="https://www.zsh.org/" target="blank">zsh</a> or “Z shell” (pronounced “zosh” <i>not</i> “zish”) is the default shell that your (post-2019) MacBook Pro shipped with from the manufacturer.</p> 
+
+	<p>A shell is a small piece of software that passes commands from the end-user (that’s you!) through the terminal to the kernel (that’s the deep insides of your computer). If you didn’t have a shell, your terminal wouldn’t know how to send your commands to the kernel.</p>
+
+	<p>The name “zsh” is an in-joke. It was the alias of a teaching assistant named <code>Z</code>hong <code>Sh</code>ao at Princeton in 1990, when the program was originally created.  Now you know.</p>
+
+	<p>You can tell what shell your terminal is using by running the command <code>echo $SHELL</code></p>
+
+	<p><code>echo</code> is a built-in Linux tool that prints strings to the screen. <code>SHELL</code> is an environment variable on your computer. <code>echo $SHELL</code> will print the value of the variable <code>SHELL</code> to your screen. Confirm for yourself that your shell is zsh.</p>
+
+
+	<h2><a href="https://ohmyz.sh/" target="blank">oh-my-zsh</a></h2>
+
+	<p><a href="https://ohmyz.sh/" target="blank">oh-my-zsh</a> is a framework for managing your zsh configuration. This sounds boring, but I assure you it is not.</p> 
+
+	<p>To install oh-my-zsh, find the curl command in the <a href="https://ohmyz.sh/#install" target="blank">installation guide</a>. It probably looks like this:</p>
+
+	<div class="code-block">
+		<p>$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</p>
+	</div>
+
+	<p>(remember that the <code>$</code> means “in your terminal” — don’t copy and paste that dollar sign!)</p>
+
+	<p><b>Before you run this installation command, it’s important to understand what will happen:</b></p>
+
+	<ol>
+		<li>The tool will install a directory at <code>~/.oh-my-zsh</code></li>
+		<li>The tool will replace your existing <code>~/.zshrc file</code></li>
+	</ol>
+
+	<p>Your <code>~/.zshrc</code> file is the file that runs when your shell starts. It’s a place for you to configure your shell, add to your <a href="what-the-path.html" target="blank">PATH</a>, and create aliases, among other things.</p> 
+
+	<p>(As an aside, <code>rc</code> in <code>~/.zshrc</code> is a tribute to much older software; it stands for “runcom” or “runcon” short for “run command” or “run control” — a reference to MIT CTSS, the precursor to UNIX, developed in 1965. Now you know.)</p>
+
+	<p>Replacing your <code>~/.zshrc</code> file is a big deal, particularly if you have made changes to your file and would like to preserve those changes. Because this is a big deal, oh-my-zsh will actually save a copy of your old <code>~/.zshrc</code> file at <code>~/.zshrc.pre-oh-my-zsh</code>. If you need to get your old file back, that’s where it is.</p>
+
+	<p>Now that we know what will happen, go ahead and run the installation command.</p> 
+
+	<p>In order for the installation to take effect, you might need to restart your shell. To restart your shell (without restarting your terminal) run <code>source ~/.zshrc</code></p>
+
+	<p>People like oh-my-zsh because it has <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" target="blank">“themes”</a> that can make your terminal pretty. Please do not spend a bunch of time configuring your oh-my-zsh theme, changing colors, etc (until you have a full time job offer, then do whatever you want). The goal here is not to make your terminal pretty, it’s to make it practical. I use the default “robbyrussell” theme, which shows me:</p>
+
+	<ul>
+		<li>What directory I’m in</li>
+		<li>What branch I’m on</li>
+		<li>Whether my git working tree is clean (a small x symbol at the end of the line)</li>
+	</ul>
+
+	<p>Many people also like to have the command line print the current timestamp so that they can see exactly when they ran a particular command. Some themes include the timestamp.</p> 
+
+	<p>To change the theme, you’ll need to open your new <code>~/.zshrc</code> file in vim. If you aren’t already familiar with vim, please take a moment with <a href="vim-crash-course.html" target="blank">my vim crash course</a>. Yes, we could technically open this file in a different text editor, but we’re software engineers and we’re already in our terminal, and we can quickly do this work in vim — the more that you force yourself to use vim, the more comfortable you’ll be using it.</p>
+
+	<p><code>vim ~/.zshrc</code> to open the file with vim.</p>
+
+	<p>You’ll see that you now have a really long <code>~/.zshrc</code> file! It has tons of options that are commented out. You can read through those options and test out the features that sound interesting to you by uncommenting the lines that you want to have take effect.</p>
+
+
+	<h2><a href="https://github.com/zsh-users/zsh-autosuggestions" target="blank">zsh-autosuggestions</a></h2>
+
+	<p><a href="https://github.com/zsh-users/zsh-autosuggestions" target="blank">zsh-autosuggestions</a> is one of three command line tools I cannot live without. It offers command completion suggestions while you’re typing so that you only have to write the first piece of a command. Once you’ve written enough of the command that you can see the rest of the command you want as a suggestion, you can use the right arrow on your keyboard to complete your command.</p>
+
+	<p>Follow the zsh-autosuggestions <a href="https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md" target="blank">install instructions</a> for installing this tool with oh-my-zsh (summarized below).</p>
+
+	<p>Run this <code>git clone</code> command to clone the zsh-autosuggestions repo:</p>
+
+	<div class="code-block">
+		<p>$ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions</p>
+	</div>
+
+	<p>Open your <code>~/.zshrc</code> file with <code>vim ~/.zshrc</code> and add zsh-autosuggestions to the pluggins section.</p>
+
+	<p>Restart your shell with <code>source ~/.zshrc</code></p>
+
+
+	<h2><a href="http://github.com/junegunn/fzf" target="blank">fzf</a></h2>
+
+	<p>fuzzy finder! <a href="http://github.com/junegunn/fzf" target="blank">fzf</a> turbo charges “reverse-i-search”</p>
+
+	<p>Before you install <code>fzf</code>, let’s talk about what “reverse-i-search” is. I know you know how to “up arrow” your way to old commands. Did you know that you can search them instead? Type <code>ctrl + r</code> into your terminal. This will open “reverse-i-search” (you can tell, because your command line will now say “reverse-i-search” or "back-i-search"). In this mode, you can start typing commands you’ve typed in the past, and you’ll see matches with past commands as you type. With a little practice and some <a href="https://codeburst.io/use-reverse-i-search-to-quickly-navigate-through-your-history-917f4d7ffd37" target="blank">tutorials</a>, reverse-i-search can be a very powerful tool. reverse-i-search is honestly great just on its own, but <code>fzf</code> adds a little extra sugar.</p>
+
+	<p>While you’re searching, <code>fzf</code> will show you many potential matching commands. It also lets you search for matching text in the middle of previous commands, and it’s pretty good at guessing correctly even when you have typos. Now when you think “I’m pretty sure I’ve run this command before” you can run <code>ctrl + r</code>, start typing whatever you can remember, and see a bunch of potential command matches.</p> 
+
+	<p>To install <code>fzf</code>, follow the instructions from the <a href="https://github.com/junegunn/fzf#using-git" target="blank"></a> (copied below):</p>
+
+	<div class="code-block">
+		<p>$ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf</p>
+		<p>$ ~/.fzf/install</p>
+	</div>
+
+	<p>Restart your shell with <code>source ~/.zshrc</code></p>
+
+	<p>To test it out, run <code>ctrl + r</code> and start typing a previous command.</p>
+
+	<p>If you’re in <code>fzf</code> search mode and you don’t want to be, <code>ctrl + c</code> to quit the command and regain control of your command line (this is always true of <code>ctrl + c</code> — want a fresh command line? <code>ctrl + c</code> will reset it for you).</p>
+
+
+	<h2><a href="https://github.com/rupa/z/" target="blank">z</a> (jump around)</h2>
+
+	<p><a href="https://github.com/rupa/z/" target="blank">z</a> is a tool that creates a database of the directories that you cd into, based on frequency and recency. Instead of running <code>cd ../../../</code> back and forth into various directories you can run <code>z &lsaquo;part of a directory name&rsaquo;</code> and <code>z</code> will guess what directory you mean. It’s good. Doesn’t matter where I am on my machine, <code>z</code> takes me exactly where I want to be.</p>
+
+	<p>The installation instructions for z are a little thin. This should work unless something has changed:</p>
+
+	<div class="code-block">
+		<p>$ cd $HOME</p>
+		<p>$ git clone https://github.com/rupa/z.git</p>
+		<p>$ echo '. $HOME/z/z.sh' >> ~/.zshrc</p>
+		<p>$ source ~/.zshrc</p>
+	</div>
+
+	<p>Once installed, cd around a bunch into directories that you want in your database, then run <code>z &lsaquo;some directory&lsaquo;</code> — as long as that directory name is reasonably unique, <code>z</code> should take you straight to that directory. Learning what directory shorthand works takes a little getting used to, but you’ll get there with practice. Learning <code>z</code> will save you so much time and more importantly, so much mental effort! Our brains only have so many energy to do complex things each day. Don’t waste your precious brain power manually cd’ing between directories.</p>
+
+
+	<h2>That’s it!</h2>
+
+	<p>I’ve been asking friends for their terminal tooling advice for several years. These are the only tools that have survived the transfer to new machines as I’ve replaced old laptops and development hosts. I like to keep my custom tool list relatively short and simple, because the more custom tooling you add the more likely it is that something will break and cause you a headache down the road. These tools have served me well for many years.</p> 
+
+
+</body>
+</html>
+
+
+

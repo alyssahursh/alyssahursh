@@ -47,19 +47,42 @@ code {
     padding: 0.02rem 0.3rem;
     margin: 0 0.1rem;
     font-weight: light;
-    font-size: calc(0.1vw + 0.8rem);
     background: #E8E8E8;
     font-family: monospace;
+    font-size: calc(0.1vw + 0.8rem);
+}
+
+.code-block {
+	display: inline-block;
+    padding: 1.5rem 3rem 1.5rem 1.5rem;
+    font-weight: light;
+    background: #f5f5f5;
+    border-left: 8px #E8E8E8 solid;
+    margin-bottom: calc(12px + 1rem);
+}
+
+.code-block p {
+	font-family: monospace;
+	padding-bottom: 0px;
+	font-size: calc(0.1vw + 0.8rem);
 }
 
 i {
 	font-style: italic;
 }
 
-ul {
+ul,
+ol {
  	padding-left: 3rem;
- 	list-style-type: disc;
  	list-style-position: outside;
+}
+
+ul {
+ 	list-style-type: disc;
+}
+
+ol {
+ 	list-style-type: upper-greek;
 }
 
 li {
