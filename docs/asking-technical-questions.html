@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alyssa’s Guide to Asking High-Quality Technical Questions</title>
+  	<link href="../reset.css" rel="stylesheet" />
+  	<link href="docs.css" rel="stylesheet" />
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Oswald:wght@400;500&display=swap" rel="stylesheet">  
+</head>
+<body>
+
+	<h1>Alyssa’s Guide to Asking High-Quality Technical Questions</h1>
+
+	<p>You’re trying to complete a technical piece of work. Something isn’t working. You’ve tried everything you can think of and you’re still stuck. It’s time to ask for help! The way you ask for help directly impacts the likelihood that you’ll get the help you need. Here’s how to ask for help effectively.</p>
+
+	<p>This document was last updated <b>22 FEB 2022</b></p>
+
+	<h2>Start focused</h2>
+
+	<ul>
+		<li>In one sentence, what one thing are you trying to do?</li>
+	</ul>
+
+	<h2>Include more context than you think is necessary</h2>
+
+	<ul>
+		<li>Where are you currently trying to do it (i.e. your laptop, your personal development host, another host, the AWS console)?</li>
+		<li>What package (respository) are you working on, if applicable?</li>
+		<li>What packages (respositories) do you have in your local workspace, if applicable?</li>
+		<li>If the error is the result of running a particular command, what exact command did you run?</li>
+		<li>If the error is the result of running a series of commands, what is the complete series of commands (including the successful commands you ran before the failed commands, and the commands you intend to run after this command once it succeeds)</li>
+		<li>What directory are you in? (<code>pwd</code>)</li>
+	</ul>
+
+	<h2>Explain what you’ve tried already</h2>
+
+	<p>I like this format:</p>
+
+	<ul>
+		<li>This is the outcome I’m trying to achieve</li>
+		<li>This is the command I ran / this is the action I took</li>
+		<li>This is what I expected would happen</li>
+		<li>This is what happened instead</li>
+		<li>Based on that, this is what I did next...</li>
+	</ul>
+
+	<p>Repeat until you run out of information to share</p>
+
+	<h2>When did it last work?</h2>
+
+	<ul>
+		<li>Has the thing you’re trying to do ever worked for you?</li>
+		<li>If this has never worked for you (first time building a new package locally, or first time doing a test deployment, for instance), does it work for your teammates?</li>
+		<li>If it has worked for you, when did it last work? (I’m going to give you a hint here — the answer to this question should be “very recently,” on the order of minutes to hours rather than the order of days to weeks. My day starts and ends by ensuring that my code builds and my tests pass, and I recompile and retest my code with every incremental change I make — on the order of dozens or hundreds of times per day)</li>
+		<li>What has changed since it last worked? (A hint on this one, too — the answer to this question should be easy to sum up in a single sentence. If it isn’t, you’re likely trying to do more than one thing at once. Attempting to work on more than one thing at once makes it substantially harder to pinpoint what is causing which failure. What one thing are you trying to do?)</li>
+		<li>Are you able to undo those changes? If you undo those changes does it start working again?</li>
+	</ul>
+
+	<h2>Share your reference material</h2>
+
+	<ul>
+		<li>Provide links to documentation you are attempting to follow, if applicable</li>
+		<li>Provide links to example code you’re using as a reference, if applicable</li>
+		<li>Provide links to Stack Overflow questions you’re referencing, if applicable</li>
+	</ul>
+
+	<h2>On error messages</h2>
+
+	<ul>
+		<li>If you have an error message, share the whole thing!</li>
+		<li>If you can, try to point out which part of the error message is the important part (it’s okay to say, “I think that this line is the important part, but I’m not sure”)</li>
+		<li>If you can, try to explain what you think the error message means</li>
+		<li><b>Prefer sharing copy/pasted error messages rather than sending screenshots</b> so that your helper can copy/paste your error messages into Google or Stack Overflow</li>
+	</ul>
+
+	<h2>Don’t time box, “due diligence box”</h2>
+
+	<ul>
+		<li><b>There’s not a single correct amount of time to be stuck on a problem;</b> the right time limit depends on the problem you’re working on and the skills you have to solve that particular problem on your own</li>
+		<li>If you aren’t making progress and don’t know what to try next, it’s time to prepare to ask for help</li>
+		<li>Preparing high-quality technical questions is part of doing our due diligence. When you can answer the bulk of the questions listed here, you’re ready to ask for help</li>
+		<li>Doing the due diligence of compiling a high-quality technical question can help to organize your thoughts, and if you’re lucky it might even help you answer your own question</li>
+	</ul>
+
+	<h2>Sometimes this isn’t possible; sometimes it isn’t necessary</h2>
+
+	<ul>	
+		<li>Sometimes you just don’t know enough about what you don’t know to formulate the question you need to ask. That’s okay. Do your best to formulate high-quality questions, but if you can’t, it’s okay to say, “I’m just really lost right now.”</li>
+	 	<li>Sometimes you have deep shared working context with another engineer. If the person you’re asking for help knows everything about what you’re working on, this level of detail may not be strictly necessary.</li>
+ </ul> 
+
+	<h2>Take question-asking notes</h2>
+
+	<ul>	
+		<li>When you ask a question, what questions get asked of you in return?</li>
+		<li>The next time you ask a question, try to include that information from the start</li>
+	</ul>
+
+	<h2>Yep, asking high-quality questions is a lot of work!</h2>
+
+	<ul>	
+		<li><b>Answering questions is also a lot of work!</b></li>
+		<li>The more work that you do up front in asking your question, the fewer questions your helper will need to ask you in order to help you solve the problem — enabling them to answer your question faster.</li>
+		<li>Beginners often worry about asking “too many” questions. Focus on quality and don’t worry about quantity. Answering high-quality questions is substantially less taxing than answering low-quality questions (which often require a helper to do additional information gathering on your behalf).</li>
+		<li>If the error you’re encountering is <i>really</i> common, it’s possible you’ll luck out and someone will recognize it and know the answer immediately without any additional context. However, it can be hard to tell if an error is common or if it’s highly specific to your situation. When you don’t know if the error is common or specific, it’s better to assume that it’s specific and provide as much context as you can.</li>
+		<li>High-quality questions show your helper how you’re thinking about the problem and demonstrate the effort that you’ve put into solving the problem yourself. 
+		<li>High-quality questions earn trust.</li>
+	</ul>
+
+</body>
+</html>
+
+
+
