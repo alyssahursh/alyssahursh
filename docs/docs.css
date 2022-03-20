@@ -36,7 +36,7 @@ h3 {
 	font-weight: 400;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution:  192dpi) {
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
 	h1 {
 		font-size: 76pt;
 	}
