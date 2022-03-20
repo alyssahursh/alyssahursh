@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Strategies for Stayiing Focused and Not Panicking</title>
+  	<link href="../reset.css" rel="stylesheet" />
+  	<link href="docs.css" rel="stylesheet" />
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Oswald:wght@400;500&display=swap" rel="stylesheet">  
+</head>
+<body>
+
+	<h1>Alyssa’s Strategies for Staying Focused and Not Panicking</h1>
+
+	<p>Over the past few years, I’ve developed some strategies for staying focused and making progress on my tasks without feeling scared or overwhelmed. I didn’t invent any of these ideas — I got them from coworkers and mentors, from reading developer blogs and refactoring textbooks. I’m synthesizing them here so that you might benefit from them.</p>
+
+	<p>This document was last edited on <b>28 APRIL 2021</b></p>
+
+	<h2>Recognize when you are panic-staring-into-the-void</h2>
+
+	<p>You know what I’m talking about. You get a new task assigned and you don’t know where to start and you’re afraid that you’re an idiot and you just stare. Or maybe you distract yourself with some aimless internet scrolling. Sometimes for <i>very long periods of time</i>. Sometimes for <i>days</i>. I was shocked when I learned that I wasn’t the only person who did this. Maybe it helps to know that you aren’t the only person who does this.</p>
+
+	<p>When you realize that you are panic-staring-into-the-void, hit pause. Walk away from your computer for a minute. I like to compare this to insomnia. If you have insomnia and stay in bed, you train yourself that being in bed means lying awake. If you panic-stare-into-the-void at your computer regularly, you’re training yourself that sitting at your laptop means feeling panicked. Get up and walk away, even for just five minutes.</p>
+
+	<p>When you come back, focus on doing one simple thing that you know you can do. I mean <i>really</i> simple. Sometimes my one simple thing is <b>just opening my IDE</b>. I am 100% serious. I know that sounds too simple, but I also know that I for sure know how to do it and I just need a quick win. Once my IDE is open, I do a second really simple thing. Maybe that’s opening my terminal and navigating to my workspace. Maybe it’s opening a single file. That’s my second quick win. Then I do a third simple thing. Maybe that’s running <code>git status</code> to see where I left off. Maybe that’s <code>git pull --rebase</code> to get the latest changes from origin. Now I’ve got my third quick win. We’re on a roll. We’re no longer staring into the void.</p>
+
+	<h2>Clean your kitchen before you start cooking</h2>
+
+	<p>When we work in a mess, our work <i>is</i> a mess. It is non-negotiable that you know exactly when you were last in a good working state. Before you start doing any new work, you need to prove to yourself that you have a clean slate. A clean slate means:</p>
+
+	<ul>
+		<li>Your working tree is clean (<code>git status</code> says “nothing to commit, working tree clean”):</li>
+		    <ul>
+		    	<li>You have no untracked files (if you don’t want to commit certain files, they need to be in your package or global .gitignore — don’t let untracked files linger in your working tree)</li>
+		    	<li>You have no errant uncommitted changes that you made while you were working on a previous task (if you do, and you want to get rid of them: <code>git reset --hard HEAD</code>)</li>
+		    </ul>
+		<li>You’ve deleted your build artifacts (<code>gradle clean</code> or <code>rm -rf node_modules</code> or whatever cleaning command is appropriate for your project)</li>
+		<li>You’ve recently pulled from origin (<code>git pull --rebase</code>)</li>
+		<li>You’ve had a successful build (<code>gradle build</code> or whatever build command you use)</li>
+	</ul>
+
+	<p><b>I do this at minimum once a day. Minimum.</b></p>
+
+	<p>Why is it so important to start from and regularly return to a known good state? Because when we run into trouble we want our list of potential suspects to be as short as possible. If you’re struggling with a problem on Tuesday, but your last known good state was Wednesday of the week before, we have five days of work to interrogate. If your last known good state was one hour ago, we have one hour of work to interrogate. If it was five minutes ago... you get the picture. The more recently that we know things worked, the fewer possible causes we need to look into.</p>
+
+	<h2>Identify the smallest logical, testable first unit of work</h2>
+
+	<p>Imagine that you’ve been assigned the task “Make a paper airplane.” For someone who has made dozens of paper airplanes, that’s a perfectly reasonable task; they don’t need more detailed instruction. If this is your first or second time making a paper airplane, you’ll need to break that task down into smaller components. What we’re looking for is the smallest component that we can test or demonstrate.</p> 
+
+	<p>One possible first step I can identify is “locate a piece of paper.” Can’t make a paper airplane without it! There’s no logical smaller unit of work that you could do. Locating a piece of paper might seem like too granular a task, but I promise you that it’s not. The task can be described in one phrase, and when it’s done you’ll be able to demonstrate completion (you’ll have the piece of paper).</p>
+
+	<p>Once that first small task is done, then you can think about the next unit of work. If you’re prone to feeling overwhelmed, thinking about all of the steps in advance can put you back in panic-staring-into-the-void mode, so just find that first task and stay with it until it’s complete.</p>
+
+	<p>Folding paper airplanes probably doesn’t feel like a fair example because you already know how to do that! I’ll give you a more real-world example, but I want to acknowledge first that real-world examples can be panic inducing. Just because I understand and have familiarity with my example doesn’t mean that you should, too. There are lots of different kinds of engineering, and the stuff I work on might not be familiar to you. That’s okay!</p>
+
+	<p>Imagine you’ve been given the task of making a Lambda function read from an SQS queue and update items in DynamoDB (are you panicking yet? because I’m panicking a little bit). Imagine that none of these things exist yet — no Lambda, no SQS queue, no DynamoDB table. It’s not possible to focus on all of those things at once. We have to pick one thing. Honestly, in this example, we could start with any one of these things, so I’ll arbitrarily pick the DynamoDB table. We know we need one! We can park everything else about our task and just focus on bringing that DynamoDB table into existence.</p> 
+
+	<p>Depending on your experience, making a new DynamoDB table might be a small enough unit of work. If it isn’t, we can keep breaking this task down further. Maybe your first step is answering the question: “What tool does my team use to create and manage AWS resources?” (There are several possible answers!) Once that question is answered, your second task might be to locate (and confirm with a teammate that you have found) appropriate, relevant, up-to-date documentation. Your third task, then, is to read that documentation, take notes, and bring questions to a subject matter expert who can help you understand the things you couldn’t understand on your own. Three small, concrete, sequential  tasks.</p>
+
+	<p>Remember the panic you felt thinking about Lambda + SQS + DynamoDB? Did zooming in on just one component help quell some of that panic? I know for me it did!</p>
+
+	<p>If you don’t know how to identify the smallest, logical, testable unit of work for yourself, pause and ask for help from someone who can identify it for you.</p>
+
+	<h2>Remind yourself of the one task you’re doing</h2>
+
+	<p>I literally write my task on a piece of paper in front of me when I’m feeling particularly overwhelmed. It says <b>"This is the one thing I'm trying to do"</b> on the top followed by a list of one item. When I get lost or confused or overwhelmed I look at my list of one thing and remember to just focus on that. When I’ve completed that task, then I write my next task.</p> 
+
+	<h2>How will you know that it works?</h2>
+
+	<p>We can’t merge code unless we know that it works. How will you know that your code works? There are lots of potential answers to that question! Is it unit tests? Integ tests? Deploying to a test AWS account? How do you run those tests or do that deployment?</p> 
+
+	<p>If I’m tackling something new to me, I always start there. If I’m going to prove that my code works by deploying to a test account, before I start working on any code changes I first want to just practice deploying the existing <code>origin/mainline</code> code to that test account. If I’m going to be writing new unit tests or making changes that will require updates to existing unit tests, I first want to just run the tests as-is.</p>
+
+	<p>If you make changes and tests start failing, but you didn’t run the test suite before making your changes, how do you know that your changes are really what broke those tests? If you need to do a test deployment and something fails, but you didn’t do a baseline test deployment before introducing your changes, how do you know that your changes caused the problem?</p> 
+
+	<p>If you don’t know how you’re going to test your changes, how will you know when your changes work?</p> 
+
+	<p>Whatever strategy you’re going to use to test your changes, do that once successfully before you start making changes. Just like always starting with a clean slate, making sure your testing strategy works in advance will help limit any potential suspects in the future when something inevitably doesn’t work.</p>
+
+	<h2>Make your own “Am I Missing Something Obvious?” checklist</h2>
+
+	<p>I’m an amateur home electrician (🚨🧯) and I’m obsessed with a website called <a href="http://thecircuitdetective.com" target="blank">The Circuit Detective</a>, specifically a page called <a href="http://thecircuitdetective.com/electrical_reality.php" target="blank">“Am I Missing Something Obvious?”</a>
+
+	<p>What I love about this checklist is that so many of the questions are “How do I know what I know?” When something isn’t working, how do you know what you know? What steps have you taken to prove to yourself that you’re identifying the right problem? What have you tried so far, and what has that taught you?</p>
+
+	<p>When I’m working on a task and something isn’t going as expected, I keep a log for myself for each solution I try:</p>
+
+	<ul>
+		<li>What do I want to have happen?</li>
+		<li>What did I try?</li>
+		<li>What was I expecting would happen when I tried that?</li>
+		<li>What actually happened?</li>
+		<li>Have I seen this outcome before? If so, do my notes have anything that might help me?</li>
+		<li>Am I making any assumptions that I should think twice about?</li>
+	</ul>
+
+	<p>Through this process, I’ve developed a long list for myself of things to reach for when I’m stuck. I’m faster at identifying problems that I’ve seen before because I can refer to a list of my common problems and their solutions.</p>
+
+
+	<h2>Make repetitive work easier for yourself</h2>
+
+	<p>I work on a service that involves testing by deploying changes to a test account. I cannot for the life of me remember all of the right steps to deploy those changes. Remembering a complex series of commands is not a valuable use of my precious brain.</p>
+
+	<p>When you run into complex but low-value tasks that take up your brain energy, create an alias, or memorize a new keyboard command — find a way to make that task take up less of your brain so you can focus on the problems that matter.</p>
+
+	<h2>Pick out tomorrow’s outfit tonight</h2>
+
+	<p>Do you ever do that thing where you know tomorrow is going to be a big, important day, so you pick out tomorrow’s clothes and lay them out before you go to bed? Before you leave work every day, lay out your work for tomorrow. This means:</p>
+
+	<ul>
+		<li>Cleaning up any errant code changes that you don’t actually want to keep</li>
+		<li>Committing the work that you do want to keep (even if it’s just a WIP commit that you know you’re going to modify tomorrow — committing it means naming it, which means you’ll have an easier time remembering what you were doing when you come back to it).</li>
+		<li>Re-achieving your clean slate (at minimum, <code>git pull --rebase</code> and a fresh build)</li>
+		<li>Updating your ticket with a description of the work that you did today</li>
+		<li>Writing down the one task you’re going to start with in the morning</li>
+	</ul>
+
+	<p>This way, when you get back to your computer tomorrow, you don’t have to struggle with remembering where you left off. We want coming back to the computer to feel calm! Set yourself up for success by leaving your work in good order with clear instructions to yourself on what to do next.</p>
+
+	<h2>Sneak some personal joy into your tools</h2>
+
+	<p>You can make aliases for anything you want and you can name them anything you want. For a while, I had a deployment alias called <code>cloud!</code> because typing it made me happy. The IntelliJ workspace for the service I work in most often is called “You Can Do This.” When I do print-line debugging, I print things like <code>“You are smart”</code> and <code>“I like you!”</code> so that my console is full of little pick me ups (sometimes these make it into my code reviews and it’s always very funny). I send Slack reminders to myself that say things like “This is hard, but you’re doing great!”</p>
+
+	<p><b>This is hard. You (yes you!) are doing great.</b></p>
+
+</body>
+</html>
+
+
+
