@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What the $PATH</title>
+  	<link href="../reset.css" rel="stylesheet" />
+  	<link href="docs.css" rel="stylesheet" />
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Oswald:wght@400;500&display=swap" rel="stylesheet">  
+</head>
+<body>
+
+	<h1>What the $PATH</h1>
+
+	<p>This document was last updated on <b>03 MARCH 2021</b></p>
+
+
+	<h2>First, a word about executables</h2>
+
+	<p>An <a href="https://en.wikipedia.org/wiki/Executable" target="blank">executable file</a> “causes a computer to perform indicated tasks according to encoded instructions.” When you run a command in your terminal, you’re invoking an executable file.</p>
+
+
+	<h2>What is PATH?</h2>
+
+	<p><code>PATH</code> is an <a href="https://en.wikipedia.org/wiki/Environment_variable" target="blank">environment variable</a>.</p>
+
+	<p>It is a <b>list</b> of directories, separated by <b>colons.</b> The directories in that list contain <b>executables.</b></p>
+
+	<p>When you run a command in your terminal, your shell looks for the executable in the directories listed in your <code>PATH</code>. If it can’t find the executable in any of those directories, the command will fail.</p> 
+
+	<p>To see the value of your <code>PATH</code>, run <code>echo $PATH</code>. The output should look something like this:</p>
+
+	<div class="code-block">
+		<p>/Users/alyhursh/.nvm/versions/node/v8.17.0/bin:/Users/alyhursh/.toolbox/bin/:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/alyhursh/.fzf/bin</p>
+	</div>
+
+	<p>Since looking at a colon-separated list is hard, here’s the same information with each element on a new line:</p>
+
+	<div class="code-block">
+		<p>/Users/alyhursh/.nvm/versions/node/v8.17.0/bin</p>
+		<p>/Users/alyhursh/.toolbox/bin</p>
+		<p>/usr/local/bin</p>
+		<p>/usr/bin</p>
+		<p>/bin</p>
+		<p>/usr/sbin</p>
+		<p>/sbin</p>
+		<p>/usr/local/go/bin</p>
+		<p>/Users/alyhursh/.fzf/bin</p>
+	</div>
+
+	<p>Those are the directories my shell will search for my executables.</p>
+
+	<p>You can get your terminal to display the elements of your path on new lines with:</p>
+
+	<div class="code-block">
+		<p>echo "${PATH//:/$'\n'}"</p>
+	</div>
+
+	<h2>Try this</h2> 
+	<p>Run <code>which git</code></p>
+	<p>The output is likely <code>usr/bin/git</code> — that’s where the git executable is located.</p>
+
+	<p>See how <code>usr/bin</code> is on my <code>PATH</code>? Remember that <code>usr/bin/git</code> is where my git executable is located? This is how my shell finds git.</p>
+
+
+	<h2>Where does PATH come from?</h2>
+
+	<p>Your <code>PATH</code> is defined in your shell files. You will likely find references to <code>PATH</code> in a file called <code>~/.zshrc</code>. To display the contents of that file in your terminal, run <code>cat ~/.zshrc</code>.</p>
+
+	<p>In my <code>~/.zshrc</code> file, I see a reference that looks like this:</p>
+
+	<div class="code-block">
+		<p>export PATH=~/.toolbox/bin/:$PATH</p>
+	</div>
+
+
+	<p>What this says in English is “update my <code>PATH</code> environment variable to include <code>~/.toolbox/bin/</code> plus whatever my <code>PATH</code> was before.”</p>
+
+	<p>If I wanted to add another directory to my path, I could add another line, like this:</p>
+
+	<div class="code-block">
+		<p>export PATH=~/.another/directory/for/my/path:$PATH</p>
+	</div>
+	
+	<p>Or, I could do it by updating the original line:</p> 
+
+	<div class="code-block">
+		<p>export PATH=~/.toolbox/bin:~/.another/directory/for/my/path:$PATH</p>
+	</div>
+
+	<p>Remember to separate directories with a <code>:</code></p>
+
+
+	<h2>What is “source”?</h2>
+
+	<p>When you make changes to shell files, you need to restart your shell in order for those changes to take effect. You could close your terminal and reopen it, or you can “source” the file that has the changes. To “source” the file, run <code>source ~/.zshrc</code> (or whatever file you need to source).</p>
+
+	<p>If you add a directory to your <code>PATH</code> and then you try to run an executable in that directory and it still doesn’t work, you likely forgot to <code>source</code>.</p>
+
+
+	<h2>When should I suspect an issue with my PATH?</h2>
+
+	If you run a command and the output looks like zsh: command not found <command name> it’s almost certain that your PATH is to blame.
+
+	<p>When you’re running a command, you’re trying to execute an executable. Where is the executable located on your computer? Is that directory on your <code>PATH</code>? Run <code>echo $PATH</code> to check. If the directory containing the executable isn’t on your <code>PATH</code>, you’ll need to update your <code>PATH</code>.</p>
+
+
+	<h2>Order matters!</h2>
+
+	<p>If somehow you have two executables with the same name, your shell will stop looking when it finds the first one. This isn’t particularly common, but it does happen. For instance, a while ago at Amazon we went through a <code>brazil</code> cli migration. It was possible to have two versions of the <code>brazil</code> cli at once. Let’s say that your two versions were in directories like this:</p>
+
+	<div class="code-block">
+		<p>/path/to/version/*one*/usr/bin/brazil</p>
+		<p>/path/to/version/*two*/usr/bin/brazil</p>
+	</div>
+
+	<p>If your <code>PATH</code> had them in that order, then running <code>brazil</code> would only ever find version one. Even though version two is on your <code>PATH</code>, it would never be executed. If you have an issue where the command you want seems to exist but isn’t behaving as expected, this might be the root of the problem.</p>
+
+	<p>In this case, running <code>which -a brazil</code> would show both directories. Running <code>echo $PATH</code> would show you what order the directories are in. Changing the order would get you the other executable!</p>
+
+
+	<h2>Other common environment variables</h2>
+
+	<p>While we’re talking about environment variables, here are a few others:</p>
+
+	<div class="code-block">
+		<p>HOST</p>
+		<p>USER</p>
+		<p>SHELL</p>
+	</div>
+
+	<p>Try running <code>echo $HOST</code> — What is the output?</p>
+
+</body>
+</html>
+
+
+
