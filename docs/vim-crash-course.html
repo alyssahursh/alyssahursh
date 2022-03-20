@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Vim Crash Course</title>
+  	<link href="../reset.css" rel="stylesheet" />
+  	<link href="docs.css" rel="stylesheet" />
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Oswald:wght@400;500&display=swap" rel="stylesheet">  
+</head>
+<body>
+
+	<h1>Vim Crash Course</h1>
+
+	<p>It is imperative that you have at least a beginner understanding of how to use <code>vim</code> in order to be able to do your job confidently and effectively. Here’s a 10 minute crash course.</p>
+
+	<p>This document was last updated on <b>20 MARCH 2022</b></p>
+
+	<h2>What is vim?</h2>
+
+	<p><a href="https://www.vim.org/" target="blank">Vim</a> is short for <b>“visual modified.”</b> Vim is a bare bones but extremely powerful text editor that you run in your terminal. You can (and will!) use it to make quick changes to files without having to open them in a separate application.</p>
+
+
+	<h2>How do I open a file using vim?</h2>
+
+	<p>In your terminal, type the command <code>vim &lsaquo;file name&rsaquo;</code>.</p> 
+
+	<p>(Remember that when you see <code>&lsaquo;this syntax&rsaquo;</code>, it's a sign to replace everything including the angle brackets with something specific to you. For example, if you want to open a file called <code>configuration</code> you would type <code>vim configuration</code>)</p>
+
+
+	<h2>How do I close a file that I’ve opened in vim?</h2>
+
+	<p>This is one of the <a href="https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor" target="blank">most upvoted questions ever asked on StackOverflow</a>. To close vim:</p>
+
+	<ol>
+		<li>Make sure you aren’t in INSERT mode by hitting the <code>esc</code> key</li>
+		<li>Type the colon character <code>:</code> </li>
+		<li>To save your changes, type <code>w</code> for write</li>
+		<li>To quit the application, type <code>q</code> for quit</li>
+		<li>Hit <code>enter</code> for the command to take effect</li>
+	</ol>
+
+	<p>I speak this out loud as “escape colon write quit” — <code>esc :wq</code></p>
+
+	<h2>How do I edit a file in vim?</h2>
+
+	<p>The most basic way to edit a file in vim is to type <code>i</code> to enter <code>INSERT</code> mode. Now you can type in the file. If that’s as far as you get in this tutorial for now, that’s fine.</p>
+
+	<p>To exit <code>INSERT</code> mode, hit <code>esc</code></p>
+
+
+	<h2>What are the next vim commands I should learn?</h2>
+
+	<p>Vim commands can only be typed when you are not in <code>INSERT</code> mode. If you are in <code>INSERT</code> mode, vim will tell you this by putting the word <code>INSERT</code> at the bottom of the screen. To exit <code>INSERT</code> mode, hit <code>esc</code></p>
+
+	<p>Here are some commands I use all the time:</p>
+
+	<ul>
+		<li><code>0</code> - moves you to the beginning of the line that the cursor is on</li>
+		<li><code>$</code> - moves you to the end of the line that the cursor is on</li>
+		<li><code>dd</code> - deletes the entire line that the cursor is on</li>
+		<li><code>dw</code> - deletes the word that the cursor is on</li>
+		<li><code>p</code> - pastes whatever you just deleted using the dd or dw command</li>
+		<li><code>u</code> - to undo your last command</li>
+	</ul>
+
+	<p>Honestly, that’s enough for now. Everything else you can just do by using the arrow keys to move around. When you eventually get frustrated by that because it’s too slow, find five new commands you want to learn and memorize them.</p>
+
+	<h2>How can I practice this right now?</h2>
+
+	<ul>
+		<li>Make a new file (<code>touch practice</code> to make an empty file called practice)</li>
+		<li>Open the file (<code>vim practice</code>)</li>
+		<li>Type some text into the file (remember to type <code>i</code> first to enter <code>INSERT</code> mode!)</li>
+		<li>Hit enter and type more things on the next line! Make five lines of random text. When I’m learning and I need random text, I write nice things to myself. You should do the same. Here are some ideas: I am smart. I can do this. I will be successful. Nobody will stop me. <b>I have the right and the ability to learn anything I want to learn.</b></li>
+		<li>Now that you have several lines of text, hit <code>esc</code> to exit <code>INSERT</code> mode</li>
+		<li>Try going to the beginning and end of a line (<code>0</code> for beginning! <code>$</code> for end!)</li>
+		<li>Try deleting an entire line (<code>dd</code>)</li>
+		<li>Try pasting that line back (<code>p</code>)</li>
+		<li>Try deleting a word (<code>dw</code>)</li>
+		<li>Try undoing your last command (<code>u</code>)</li>
+		<li>Save the file without closing (<code>:w</code>)</li>
+		<li>Save the file and close it (<code>:wq</code>)</li>
+	</ul>
+
+	<h2>"I read that 'real' vim users use <b>hjkl</b> to move the cursor instead of using the arrow keys"</h2>
+
+	<p>I just truly do not care. The arrow keys are <i>right there</i> and you probably already have good muscle memory about using them. Insiting that there are "right" and "wrong" ways to accomplish simple tasks is gatekeeping. The goal of gatekeepers is to make beginners feel like they don't belong. We ignore gatekeepers. If you like using <code>hjkl</code>, use <code>hjkl</code>. If you like using the arrow keys, use the arrow keys.</p>
+
+
+	<h2>Where can I find more help in learning vim?</h2>
+
+	<p><a href="https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/" target="blank">Linux.com</a> has a nice 101 post on more basic <code>vim</code> commands.</p>
+
+	<p><b>You are smart. You can do this.</b> You have the right and the ability to learn anything you want to learn.</p>
+
+
+</body>
+</html>
+
+
+
