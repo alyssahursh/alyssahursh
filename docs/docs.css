@@ -36,33 +36,6 @@ h3 {
 	font-weight: 400;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-	h1 {
-		font-size: 76pt;
-	}
-
-	h2 {
-		font-size: 42pt;
-	}
-
-	p,
-	li,
-	h3 {
-	    font-size: 24pt;
-	}
-}
-
-p {
-	padding-bottom: calc(12px + 1rem);
-}
-
-b {
-    display: inline-block;
-    padding: 0.03rem 0.4rem;
-    background: #F4DCFD;
-    font-weight: 400;
-}
-
 code {
     display: inline-block;
     padding: 0.02rem 0.3rem;
@@ -87,6 +60,40 @@ code {
 	padding-bottom: 0px;
 	font-size: calc(0.1vw + 0.8rem);
 }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+	h1 {
+		font-size: 76pt;
+	}
+
+	h2 {
+		font-size: 42pt;
+	}
+
+	p,
+	li,
+	h3 {
+	    font-size: 24pt;
+	}
+
+	code,
+	code-block p {
+		font-size: 22pt;
+	}
+}
+
+p {
+	padding-bottom: calc(12px + 1rem);
+}
+
+b {
+    display: inline-block;
+    padding: 0.03rem 0.4rem;
+    background: #F4DCFD;
+    font-weight: 400;
+}
+
+
 
 i {
 	font-style: italic;
