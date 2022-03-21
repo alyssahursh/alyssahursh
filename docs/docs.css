@@ -62,18 +62,22 @@ code {
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+	body {
+		padding: 5rem;
+	}
+
 	h1 {
 		font-size: 76pt;
 	}
 
 	h2 {
-		font-size: 42pt;
+		font-size: 45pt;
 	}
 
 	p,
 	li,
 	h3 {
-	    font-size: 24pt;
+	    font-size: 26pt;
 	}
 
 	code,
