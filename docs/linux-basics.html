@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Linux Basics</title>
+  	<link href="../reset.css" rel="stylesheet" />
+  	<link href="docs.css" rel="stylesheet" />
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Oswald:wght@400;500&display=swap" rel="stylesheet">  
+</head>
+<body>
+
+	<h1>Linux Basics — Or, "How to read the man page"</h1>
+
+	<p>Linux is a "family of open-source Unix-like operating systems based on the Linux kernel" (thanks, <a href="https://en.wikipedia.org/wiki/Linux" target="blank">Wikipedia</a>). The Linux kernel was first released in 1991 by Linus Torvalds (that's the same guy who invented git). The name "Linux" is a pun on his name. All computer things are secretly people things, and knowing that makes computer things less intimidating. Now you know.</p>
+
+	<p>Linux commands (and other CLI commands more generally) can feel a little inscrutable until you learn how to learn about them.</p>
+
+	<p>This document was last updated on <b>20 MARCH 2022</b></p>
+
+	<h2>Let Linux commands tell you about themselves</h2>
+
+	<p>Have you ever copy and pasted a command you found on the internet without know what it does? (Don't lie to me, I know you have.) Do you know that you can understanding <i>anything</i>? That includes understanding commands that look like a series of random letters and punctuation.</p>
+
+	<p>I saw this command in some documentation recently:</p>
+
+	<div class="code-block">
+		<p>ls -ltgpha ./</p>
+	</div>
+
+	<p>Maybe you recognize <code>ls</code> as the Linux command to list directory contents. (If you don't, that's okay! <code>ls</code> is the Linux command to list directory contents.) What do all those other letters and punctuation mean? Ask the tool:</p>  
+
+	<div class="code-block">
+		<p>man ls</p>
+	</div>
+
+	<p><code>man</code> is a Linux command that opens the manual for other commands. When you run <code>man ls</code>, you'll get something like this:</p>
+
+	<div class="code-block">
+		<p>LS(1) General Commands Manual</p>
+		<p>&nbsp;</p>
+		<p>NAME</p>
+		<p>ls – list directory contents</p>
+		<p>&nbsp;</p>
+		<p>SYNOPSIS</p>
+		<p>ls [-@ABCFGHILOPRSTUWabcdefghiklmnopqrstuvwxy1%,] [--color=when] [-D format] [file ...]</p>
+		<p>&nbsp;</p>
+		<p>DESCRIPTION</p>
+		<p>For each operand that names a file of a type other than directory, ls displays its name as well as any requested, associated information.  For each operand that names a file of type directory, ls displays the names of files contained within that directory, as well as any requested, associated information.</p>
+		<p>&nbsp;</p>
+		<p>[truncated because these files are very long]</p>
+	</div>
+
+	<p>If you keep scrolling down the manual, you'll see a list of options. In the original command <code>-lgtpha</code> is a series of six options (each letter represents one option). Here's the documentation for each of the selected options (I cut out the parts of the documentation that we don't need for this lesson):</p>
+
+	<div class="code-block">
+			<p>-l — (The lowercase letter “ell”.) List files in the long format, as described in the The Long Format subsection below.</p>
+			<p>&nbsp;</p>
+			<p>-g — This option has no effect. It is only available for compatibility with 4.3BSD, where it was used to display the group name in the long (-l) format output.  This option is incompatible with IEEE Std 1003.1-2008 (“POSIX.1”).</p>
+			<p>&nbsp;</p>
+			<p>-t — Sort by descending time modified (most recently modified first). If two files have the same modification timestamp, sort their names in ascending lexicographical order. The -r option reverses both of these sort orders.</p>
+			<p>&nbsp;</p>
+			<p>-p — Write a slash (‘/’) after each filename if that file is a directory.</p>
+			<p>&nbsp;</p>
+			<p>-h — When used with the -l option, use unit suffixes: Byte, Kilobyte, Megabyte, Gigabyte, Terabyte and Petabyte in order to reduce the number of digits to four or fewer using base 2 for sizes.  This option is not defined in IEEE Std 1003.1-2008 (“POSIX.1”)</p>
+			<p>&nbsp;</p>
+			<p>-a — Include directory entries whose names begin with a dot (‘.’).</p>
+		</div>
+
+	<p>Putting that all together, <code>-lgtpha</code> means: list the context of this directory using the "long" format (defined elsewhere in the manual if we want to understand it), in order from most recently modified to least recently modified; append the <code>/</code> character to directory names to make it easier to spot directories; slightly modify the file size display to make it cuter; and include the "dot" files and directories.</p>
+
+	<p>My favorite part of the command is <code>-g</code>, which says that it "has no effect." Whoever wrote this command probably just copied it from someone else.</p>
+
+	<p>Since the <code>ls</code> command doesn't modify files, you can try running variations of the command to understand what each flag does. Give it a try! Pick a directory with some files, dot files, and sub-directories (your home directory <code>~</code> is a good candidate). Run these commands one at a time:</p>
+
+	<div class="code-block">
+		<p>ls</p>
+		<p>ls -a</p>
+		<p>ls -l</p>
+		<p>ls -la</p>
+		<p>ls -lh</p>
+		<p>ls -lt</p>
+		<p>ls -alth</p>
+		<p>ls -althp</p>
+	</div>
+
+	<p>Before you run each command, make a hypothesis about what the output will look like. Why do you think that? Were you right?</p>
+
+	<p>Run <code>man ls</code> to open the <code>ls</code> manual. Pick out a flag that isn't discussed here and try running <code>ls</code> with that flag. (To quit out of a manual, type the letter <code>q</code>.</p>
+
+	<h2>Almost all command line tools have a built-in manual</h2>
+
+	<p>The Linux commands all use the <code>man &lsaquo;tool name&rsaquo;</code> syntax. Other tools are less consistent. The AWS CLI uses <code>aws help</code>. Many internal tools at Amazon use <code>&lsaquo;tool name&rsaquo; --help</code>. The inconsistency is frustrating! The manual is always <i>somewhere</i>. Try all three of those options before turning to Google.</p>
+
+
+	<h2>Common Linux commands</h2>
+
+	<p>Here's the list of Linux commands I can think of off the top of my head, which is a pretty good heuristic for which commands I actually use. You don't need to memorize all of these right now, you just need to know that they exist.</p>
+
+	<div class="code-block">
+		<p>cd — "Change directory"</p>
+		<p>cp — "Copy" — copy a file to a second location</p>
+		<p>mv — "Move" — move a file to a new location</p>
+		<p>rm — "Remove" — use the -r flag to remove recursively; use the -f flag to remove with force</p>
+		<p>pwd — "Present working directory" — print the path of the current directory</p>
+		<p>cat — "Concatenate" — print a file to the screen without opening it</p>
+		<p>ls — "List" the contents of a directory</p>
+		<p>touch — Create a file</p>
+		<p>mkdir — "Make directory" — use the -p flag to also create any intermediate directories if required </p>
+		<p>which — Locate a program file in your PATH</p>
+		<p>grep — Search for a specific file pattern in a file or directory</p>
+		<p>ssh — "Secure shell" — log into a remote machine</p>
+		<p>chmod — "Change file mode" — change the "file mode bits" of a file</p>
+		<p>chown — "Change owner" — change the file ownder and file "group"</p>
+		<p>man — "Manual" — open the manual for a given command</p>
+	</div>
+
+</body>
+</html>
+
+
+
