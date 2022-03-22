@@ -1,82 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Code Review Culture</title>
-  	<link href="../reset.css" rel="stylesheet" />
-  	<link href="docs.css" rel="stylesheet" />
-  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<meta charset="utf-8">
+	<title>Code Review Culture</title>
+	<link href="../reset.css" rel="stylesheet" />
+	<link href="docs.css" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Oswald:wght@400;500&display=swap" rel="stylesheet">  
 </head>
 <body>
-
-	<h1>Code Review Culture</h1>
+	<nav>
+		<h1><a class="active" href="../index.html">ALYSSA HURSH <div class="purple">THINKS YOU CAN DO ANYTHING</div></a></h1>
+	</nav>
+	<div class="doc">
+		<h1>Code Review Culture</h1>
 
 		<p>Software engineering is the only field I know of where every unit of work you do is closely inspected by a panel of your peers. Putting your code through code review is a really vulnerable act. I think that every team should have a handbook about how they approach code review so that everyone has a shared understanding of their responsibilities. I wrote this code review culture doc for my team at Amazon.</p>
 
 		<p>This document was last updated on <b>20 MARCH 2022</b></p>
 
-	<h2>Assigning reviewers</h2>
+		<h2>Assigning reviewers</h2>
 
 		<ul>
-	    <li>Assign one or two reviewers to indicate who in particular you want to review your work.</li>
-	    <li><b>Be aware of your biases</b> in selecting reviewers. Do you tend to send your "complex" code reviews to a certain set of peers and your "easy" code reviews to a different set of peers?</li>
-	    <li>If you're a more experienced engineer working on something "complex," consider adding a more junior reviewer so that they have visibility into your work. Consider doing a live "co-review" with them so that they can ask questions 1:1 that they might not feel comfortable asking in the public forum of the code review itself.</li>
+			<li>Assign one or two reviewers to indicate who in particular you want to review your work.</li>
+			<li><b>Be aware of your biases</b> in selecting reviewers. Do you tend to send your "complex" code reviews to a certain set of peers and your "easy" code reviews to a different set of peers?</li>
+			<li>If you're a more experienced engineer working on something "complex," consider adding a more junior reviewer so that they have visibility into your work. Consider doing a live "co-review" with them so that they can ask questions 1:1 that they might not feel comfortable asking in the public forum of the code review itself.</li>
 		</ul>
 
-	<h2>Commit best practices</h2>
+		<h2>Commit best practices</h2>
 		
 		<ul>
 			<li>Atomic commits are easier to review. A commit should generally contain the smallest possible logical, testable unit of work.</li>
-	    <li>Avoid refactoring (modifying code without modifying behavior) and changing tests in the same commit. It might take three commits to refactor a piece of code: add any missing tests, refactor without changing tests, update tests if necessary.</li>
-	    <li>Avoid making style changes unless you have good reason. Unnecessary changes pollute commit history and make it hard to understand when/why/how work was done originally.</li>
-	    <li>Our team believes that a single code review can contain multiple commits. Every commit in a code review must build/pass all tests and be a meaningful unit of work. Work in progress (WIP) commits that are not meaningful units of work must be squashed into meaningful units of work before code review.</li>
+			<li>Avoid refactoring (modifying code without modifying behavior) and changing tests in the same commit. It might take three commits to refactor a piece of code: add any missing tests, refactor without changing tests, update tests if necessary.</li>
+			<li>Avoid making style changes unless you have good reason. Unnecessary changes pollute commit history and make it hard to understand when/why/how work was done originally.</li>
+			<li>Our team believes that a single code review can contain multiple commits. Every commit in a code review must build/pass all tests and be a meaningful unit of work. Work in progress (WIP) commits that are not meaningful units of work must be squashed into meaningful units of work before code review.</li>
 		</ul>
 
-	<h2>Commit message best practices</h2>
+		<h2>Commit message best practices</h2>
 		<ul>
-	    <li>Follow the Chris Beams guide for <a href="https://cbea.ms/git-commit/" target="blank">How to Write a Git Commit Message</a>, specifically:</li>
-	    	<ul>
-	    		<li>Commit messages <i>always</i> start with a capital letter</li>
-	    		<li>Commit messages use the "imperative" mood (think "Add" instead of "Added" or "Adds")</li>
-	    		<li>Commit messages should finish the sentence, "If applied, this commit will..."</li>
-	    		<li>Commit messages generally should not contain the word "and" ("and" is a sign that your commit does two things, which means it should likely be two commits)</li>
-	    		<li>The first line of a commit message should be 50 characters or less</li>
-	    	  <li>The first line of a commit message never ends in punctuation</li>
-	    	</ul>
-	    <li>Ensure that every commit message contains the code review and ticket links (this is an Amazon thing that might not apply outside Amazon, but the goal here is to create beautiful, connected artifacts that can help a future reader understand why the work was done).</li>
+			<li>Follow the Chris Beams guide for <a href="https://cbea.ms/git-commit/" target="blank">How to Write a Git Commit Message</a>, specifically:</li>
+			<ul>
+				<li>Commit messages <i>always</i> start with a capital letter</li>
+				<li>Commit messages use the "imperative" mood (think "Add" instead of "Added" or "Adds")</li>
+				<li>Commit messages should finish the sentence, "If applied, this commit will..."</li>
+				<li>Commit messages generally should not contain the word "and" ("and" is a sign that your commit does two things, which means it should likely be two commits)</li>
+				<li>The first line of a commit message should be 50 characters or less</li>
+				<li>The first line of a commit message never ends in punctuation</li>
+			</ul>
+			<li>Ensure that every commit message contains the code review and ticket links (this is an Amazon thing that might not apply outside Amazon, but the goal here is to create beautiful, connected artifacts that can help a future reader understand why the work was done).</li>
 		</ul>
 
-	<h2>Code review description best practices</h2>
+		<h2>Code review description best practices</h2>
 		<ul>
-	    <li>Include a brief description of what your code change accomplishes.</li>
-	    <li>Include information about the testing steps you performed. Ideally, include the exact commands you ran and the exact outputs you received, if applicable.</li>
-	    <li>Include the link to the tracking ticket. If your work does not have a tracking ticket, why did you do this work? Make a ticket for it so that your work has visibility in our weekly progress reports.</li>
-	    <li>Update the description to reflect the changes that are made between code review revisions.</li>
+			<li>Include a brief description of what your code change accomplishes.</li>
+			<li>Include information about the testing steps you performed. Ideally, include the exact commands you ran and the exact outputs you received, if applicable.</li>
+			<li>Include the link to the tracking ticket. If your work does not have a tracking ticket, why did you do this work? Make a ticket for it so that your work has visibility in our weekly progress reports.</li>
+			<li>Update the description to reflect the changes that are made between code review revisions.</li>
 		</ul>
 
-	<h2>As an author</h2>
+		<h2>As an author</h2>
 		<ul>
-	    <li>If you feel out of your depth or have been stuck on something for a while, <b>ask for help!</b> We are a team that loves to pair. Pairing helps make reviews go faster because the reviewer will already be familiar with the subject before the review is published.</li>
-	    <li>Your code should be idiomatic to the language. If you don’t know what that looks like in a particular language, you can say so! We all occasionally write Java that looks like JavaScript (Kevin) and vice versa (Alyssa), and we’re all always learning. Do your best to match the surrounding code and be open to style feedback if you aren’t working in your “first choice” language.</li>
-	    <li>If there’s a particular area of the review that needs closer attention, comment on it to make sure your reviewers know where to spend their time.</li>
-	    <li>Do your best to address comments left by reviewers. You can use your best judgment to decide if comments can be well-addressed in a reply or if a conversation should be shifted offline. If a conversation does shift offline, please capture the outcome of the conversation on the code review to provide visibility to all reviewers.</li>
+			<li>If you feel out of your depth or have been stuck on something for a while, <b>ask for help!</b> We are a team that loves to pair. Pairing helps make reviews go faster because the reviewer will already be familiar with the subject before the review is published.</li>
+			<li>Your code should be idiomatic to the language. If you don’t know what that looks like in a particular language, you can say so! We all occasionally write Java that looks like JavaScript (Kevin) and vice versa (Alyssa), and we’re all always learning. Do your best to match the surrounding code and be open to style feedback if you aren’t working in your “first choice” language.</li>
+			<li>If there’s a particular area of the review that needs closer attention, comment on it to make sure your reviewers know where to spend their time.</li>
+			<li>Do your best to address comments left by reviewers. You can use your best judgment to decide if comments can be well-addressed in a reply or if a conversation should be shifted offline. If a conversation does shift offline, please capture the outcome of the conversation on the code review to provide visibility to all reviewers.</li>
 		</ul>
 
-	<h2>As a reviewer</h2>
+		<h2>As a reviewer</h2>
 		<ul>
-	    <li>Keep an eye on the big picture. Does this code review do what it claims to do? Does the overall structure make sense? Is the work well-tested?</li>
-	    <li>If comments start to get long or back-and-forth drags on, it might be best to switch to a synchronous review. Always capture the gist of any conversation in a comment after the fact.</li>
-	    <li>You don’t have to leave a [nit] comment just to prove that you looked at the code. We trust you.</li>
-	    <li>If possible, include links to documentation when suggesting an alternative approach. Code reviews are as much about teaching and learning as they are about anything else.</li>
-	    <li>Consider your own biases! Do you leave different feedback based on the author, and do those differences benefit or harm the author? This can manifest in many forms, like being less critical of or automatically assuming correctness for work done by engineers with more seniority and vice versa.</li>
-	    <li>Remember your author. Each member of our team has different strengths and needs different coaching. <b>Tailor your communication to the author when possible.</b></li>
-	    <li>In general, we trust each other to come back to something in a follow-up review if it isn’t absolutely critical. If someone says “mind if I do that in the next code review?” we often say yes. (As an author, please earn that trust so that we can keep doing this!)</li>
-	    <li>You don’t have to be a domain expert to be a reviewer. It’s okay if your participation is in the form of asking questions (“I don’t know much about this; how does this work?”) for the purpose of learning. We all learn when we ask questions publicly.</li>
-	    <li>You can mark yourself as required to ensure that the code is not merged before you've had time to review it. If you mark yourself as required, you have 24 hours to complete your review. If 24 hours passes without your review, the author can remove your lock and proceed without you.</li>
+			<li>Keep an eye on the big picture. Does this code review do what it claims to do? Does the overall structure make sense? Is the work well-tested?</li>
+			<li>If comments start to get long or back-and-forth drags on, it might be best to switch to a synchronous review. Always capture the gist of any conversation in a comment after the fact.</li>
+			<li>You don’t have to leave a [nit] comment just to prove that you looked at the code. We trust you.</li>
+			<li>If possible, include links to documentation when suggesting an alternative approach. Code reviews are as much about teaching and learning as they are about anything else.</li>
+			<li>Consider your own biases! Do you leave different feedback based on the author, and do those differences benefit or harm the author? This can manifest in many forms, like being less critical of or automatically assuming correctness for work done by engineers with more seniority and vice versa.</li>
+			<li>Remember your author. Each member of our team has different strengths and needs different coaching. <b>Tailor your communication to the author when possible.</b></li>
+			<li>In general, we trust each other to come back to something in a follow-up review if it isn’t absolutely critical. If someone says “mind if I do that in the next code review?” we often say yes. (As an author, please earn that trust so that we can keep doing this!)</li>
+			<li>You don’t have to be a domain expert to be a reviewer. It’s okay if your participation is in the form of asking questions (“I don’t know much about this; how does this work?”) for the purpose of learning. We all learn when we ask questions publicly.</li>
+			<li>You can mark yourself as required to ensure that the code is not merged before you've had time to review it. If you mark yourself as required, you have 24 hours to complete your review. If 24 hours passes without your review, the author can remove your lock and proceed without you.</li>
 		</ul>
-
+	</div>
 </body>
 </html>
 

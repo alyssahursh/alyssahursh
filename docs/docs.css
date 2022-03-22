@@ -1,6 +1,35 @@
+nav {
+	border-bottom: 1px solid black;
+	padding: 1rem;
+	position: fixed;
+	width: 100%;
+	background-color: white;
+}
+
+nav h1 {
+	font-size: 30px;
+	padding-bottom: 0;
+}
+
+
+nav h1 a,
+nav h1 a:visited {
+	border: none !important;
+	color: black;
+}
+
+.purple {
+	display: inline-block;
+	color: #DBC6E3;
+}
+
+.doc {
+	padding: 9rem 3rem;
+	margin: auto;
+	max-width: 900px;
+}
+
 body {
-	max-width: 1000px;
-	padding: 4rem 3rem;
 	margin: auto;
 	background-color: #FEFEFC;
 }
@@ -62,8 +91,16 @@ code {
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-	body {
-		padding: 5rem;
+	.doc {
+		padding: 15rem 5rem;
+	}
+
+	nav {
+		padding: 3rem;
+	}
+
+	nav h1 {
+		font-size: 38pt;
 	}
 
 	h1 {
@@ -93,7 +130,7 @@ p {
 b {
     display: inline-block;
     padding: 0.03rem 0.4rem;
-    background: #F4DCFD;
+    background: #f7e6fd;
     font-weight: 400;
 }
 
@@ -130,6 +167,6 @@ a {
 }
 
 a:visited {
-  color: purple;
+  color: #815ca4;
   border-bottom-color: purple;
 }
